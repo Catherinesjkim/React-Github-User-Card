@@ -20,9 +20,10 @@ class App extends React.Component {
         this.setState({
           name: res.data.name,
           img: res.data.avatar_url, 
-          github: res.data.html_url,
+          github: res.data.login,
+          url: res.data.html_url,
           files: res.data.repos_url, 
-          area: res.data.loctaion, 
+          location: res.data.location, 
           repoNum: res.data.public_repos, 
           followed: res.data.following,
           followers: res.data.followers,
@@ -60,9 +61,9 @@ class App extends React.Component {
 
     handleChange = event => {
       this.setState({
-        [event.target.name]: event.target.value
-      })
-    }
+        [event.target.name]: event.target.value,
+      });
+    };
     
     // handleUserTextChange = event => {
     //   this.setState({ ...this.state, userText: event.target.value });
@@ -72,7 +73,20 @@ class App extends React.Component {
       return (
         <div className="App">
           <h1>Github Users:</h1>
+          <UserCard
+            name={this.state.name}
+            img={this.state.img}
+            github={this.state.github}
+            filed={this.state.files}
+            location={this.state.location}
+            repoNum={this.state.repoNum}
+            followed={this.state.followed}
+            followers={this.state.followers}
+            login={this.state.login}
+            url={this.state.url}
+          />
           <form>
+            <h3>Search Bar</h3>
             <input 
               name="searchTerm"
               type="text" 
@@ -83,21 +97,16 @@ class App extends React.Component {
           </form>
 
           <div className="followersList">
-            {this.state.followersList &&
-              this.state.followersList.map(info => {
+            {this.state.followersList.map(info => {
                 return <FollowerCard 
-                  width="30" 
-                  src={info.avatar_url} 
                   key={info.id}
                   name={info.login}
+                  src={info.avatar_url} 
+                  github={info.html_url}
+                  files={info.repos_url}
+                  followers={info.followers_url}
                   />;
             })}
-          <UserCard
-            login={this.state.name}
-            img={this.state.img}
-            url={this.state.url}
-            followers={this.state.followers}
-          />
           </div>
         </div>
       );

@@ -6,10 +6,10 @@ const UserCard = props => {
       <img src={props.img} width="30%" alt="My Avatar"></img>
       <h2>{props.name}</h2>
       <span>Github Handle: </span>
-      <a href={props.url}>{props.login}</a>
+      <a href={props.url}>{props.github}</a>
       <p> Total Followers: {props.followers}</p>
-      <p>Total Repos: {props.repos}</p>
-      <p> Locations: {props.location}</p>
+      <p>Total Repos: {props.repoNum}</p>
+      <p> Location: {props.location}</p>
     </div>
   )
 }
