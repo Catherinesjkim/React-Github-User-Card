@@ -12,6 +12,7 @@ import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import GitHubCalendar from "react-github-calendar";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -71,6 +72,9 @@ const UserCard = props => {
       <CardMedia>
         <FavoriteIcon className={classes.favoriteIcon} />
       </CardMedia>
+      <div>
+        <GitHubCalendar username={props.github} />
+      </div> 
     </Card>
   );
 }

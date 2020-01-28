@@ -5,6 +5,7 @@ import FollowerCard from "./FollowerCard";
 import axios from "axios";
 import { Row } from "reactstrap";
 
+/* You need 2 empty arrays for followersList and searchFollowers. 1 to show at searchTerm = 0 and 1 to filter when searchTerm has a value like an if else statement. But in a class component, the if else statement is handle through prevState in the componentDidUpdate. searchTerm is to handle the input value. */
 
 class App extends React.Component {
   state = {
@@ -28,7 +29,7 @@ class App extends React.Component {
           location: res.data.location, 
           repoNum: res.data.public_repos, 
           followed: res.data.following,
-          followers: res.data.followers,
+          followers: res.data.followers
         })
   })
     .catch(err => console.log('error on fetch: ', err));
@@ -39,7 +40,7 @@ class App extends React.Component {
         console.log("API is Here:", res.data);
     this.setState({
       searchFollowers: res.data,
-      followersList: res.data,
+      followersList: res.data
     })
   })
     .catch (err => console.log('error on fetch: ', err));
